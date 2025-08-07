@@ -26,4 +26,4 @@ jobs:
         env:
           EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
         run: |
-          python meter_bill_daily_update_local_immidiate+schedule.py
+          python meter_bill_daily_update_local_immidiate.py
