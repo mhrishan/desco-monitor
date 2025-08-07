@@ -2,7 +2,7 @@ name: Daily DESCO Monitor
 
 on:
   schedule:
-    - cron: '* * * * *' # 4:01 PM Asia/Dhaka = 10:01 UTC
+    - cron: '1 10 * * *' # runs daily at 4:01 PM Asia/Dhaka (10:01 UTC)
   workflow_dispatch: # allows manual runs
 
 jobs:
@@ -17,6 +17,10 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          pip install requests urllib3
 
       - name: Run DESCO script
         env:
