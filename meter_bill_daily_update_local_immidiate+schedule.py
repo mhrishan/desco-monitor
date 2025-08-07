@@ -27,7 +27,6 @@ CONSUMPTION_URL_TEMPLATE = f"https://prepaid.desco.org.bd/api/{SYSTEM_TYPE}/cust
 
 EMAIL_FROM = "marufrishan@gmail.com"
 EMAIL_TO = "marufhasanrishan@gmail.com"
-EMAIL_PASSWORD = "qvzqubqvwshrwzex"
 EMAIL_PASSWORD = os.environ.get("EMAIL_PASSWORD")
 EMAIL_SUBJECT = "⚠️ DESCO Balance & Daily Usage"
 
@@ -200,5 +199,6 @@ if __name__ == "__main__":
                     60)  # Wait to avoid multiple runs within same minute
             else:
                 time_module.sleep(10)  # Check every 10 seconds
+
 
 
