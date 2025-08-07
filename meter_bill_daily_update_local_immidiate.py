@@ -21,7 +21,8 @@ CONSUMPTION_URL_TEMPLATE = f"https://prepaid.desco.org.bd/api/{SYSTEM_TYPE}/cust
 
 EMAIL_FROM = "marufrishan@gmail.com"
 EMAIL_TO = "marufhasanrishan@gmail.com"
-EMAIL_PASSWORD = "qvzqubqvwshrwzex"
+# EMAIL_PASSWORD = "qvzqubqvwshrwzex"
+EMAIL_PASSWORD = os.environ.get("EMAIL_PASSWORD")
 EMAIL_SUBJECT = "⚠️ DESCO Balance & Daily Usage"
 
 CSV_FILE = "desco_consumption_log.csv"
@@ -172,4 +173,5 @@ def daily_check():
 if __name__ == "__main__":
     print("🚀 Running DESCO monitor immediately.")
     daily_check()
+
 
