@@ -2,7 +2,7 @@ name: Daily DESCO Monitor
 
 on:
   schedule:
-    - cron: '0 6 * * *'  # runs daily at 12:00 PM Asia/Dhaka (6:00 UTC)
+    - cron: '12 6 * * *'  # runs daily at 12:12 PM Asia/Dhaka (06:12 UTC)
   workflow_dispatch: # allows manual runs
 
 jobs:
