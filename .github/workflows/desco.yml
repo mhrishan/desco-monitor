@@ -27,3 +27,12 @@ jobs:
           EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
         run: |
           python meter_bill_daily_update_local_immidiate.py
+
+      - name: List files for debugging
+        run: ls -la
+
+      - name: Upload DESCO CSV log
+        uses: actions/upload-artifact@v4
+        with:
+          name: desco-log
+          path: desco_consumption_log.csv
