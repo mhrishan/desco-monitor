@@ -26,4 +26,4 @@ jobs:
         env:
           EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
         run: |
-          python desco_monitor.py
+          python meter_bill_daily_update_local_immidiate+schedule.py
