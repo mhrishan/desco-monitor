@@ -26,8 +26,6 @@ EMAIL_SUBJECT = "⚠️ DESCO Balance & Daily Usage"
 
 CSV_FILE = "desco_consumption_log.csv"
 
-RUN_IMMEDIATELY = True  # Set True to run once immediately and exit
-
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 
@@ -172,6 +170,6 @@ def daily_check():
 
 
 if __name__ == "__main__":
-    if RUN_IMMEDIATELY:
-        print("🚀 Running DESCO monitor immediately.")
-        daily_check()
+    print("🚀 Running DESCO monitor immediately.")
+    daily_check()
+
