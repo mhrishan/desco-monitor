@@ -37,7 +37,7 @@ TIMEZONE = ZoneInfo("Asia/Dhaka")
 RUN_TIME = dt_time(hour=16, minute=1)
 
 # 🆕 New run mode flag
-RUN_IMMEDIATELY = False  # Set True to run once immediately and exit
+RUN_IMMEDIATELY = True  # Set True to run once immediately and exit
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -200,4 +200,5 @@ if __name__ == "__main__":
                     60)  # Wait to avoid multiple runs within same minute
             else:
                 time_module.sleep(10)  # Check every 10 seconds
+
 
