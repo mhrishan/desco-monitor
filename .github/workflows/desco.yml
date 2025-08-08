@@ -17,22 +17,26 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
-
+          
       - name: Install dependencies
         run: |
-          pip install requests urllib3
+          pip install requests urllib3 gspread oauth2client
+
+      - name: Create service_account.json
+        run: |
+          echo "${{ secrets.SERVICE_ACCOUNT_JSON }}" > service_account.json
 
       - name: Run DESCO script
         env:
           EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
         run: |
-          python meter_bill_daily_update_local_immidiate.py
+          python meter_bill_daily_update_google_sheet.py
 
-      - name: List files for debugging
-        run: ls -la
+      # - name: List files for debugging
+      #   run: ls -la
 
-      - name: Upload DESCO CSV log
-        uses: actions/upload-artifact@v4
-        with:
-          name: desco-log
-          path: desco_consumption_log.csv
+      # - name: Upload DESCO CSV log
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: desco-log
+      #     path: desco_consumption_log.csv
