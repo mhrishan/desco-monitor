@@ -24,12 +24,8 @@ jobs:
 
       - name: Create service_account.json
         run: |
-          echo "${{ secrets.GCP_SA_BASE64 }}" | base64 --decode > service_account.json
-
-
-
-
-
+          echo "${{ secrets.BASE_64 }}" | base64 --decode > service_account.json
+          
       - name: Run DESCO script
         env:
           EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
