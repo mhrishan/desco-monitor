@@ -1,0 +1,122 @@
+
+{% extends "base.html" %}
+
+{% block title %}Configuration - DESCO Monitor{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="fas fa-cog"></i> Configuration Settings</h5>
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    <!-- DESCO Settings -->
+                    <h6 class="text-primary mb-3"><i class="fas fa-bolt"></i> DESCO Account Settings</h6>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="account_number" class="form-label">Account Number</label>
+                            <input type="text" class="form-control" id="account_number" name="account_number" 
+                                   value="{{ config.account_number }}" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="meter_number" class="form-label">Meter Number</label>
+                            <input type="text" class="form-control" id="meter_number" name="meter_number" 
+                                   value="{{ config.meter_number }}" required>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="system_type" class="form-label">System Type</label>
+                        <select class="form-select" id="system_type" name="system_type" required>
+                            <option value="tkdes" {{ 'selected' if config.system_type == 'tkdes' else '' }}>tkdes</option>
+                            <option value="other" {{ 'selected' if config.system_type == 'other' else '' }}>other</option>
+                        </select>
+                    </div>
+
+                    <!-- Email Settings -->
+                    <h6 class="text-primary mb-3 mt-4"><i class="fas fa-envelope"></i> Email Settings</h6>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="email_from" class="form-label">From Email</label>
+                            <input type="email" class="form-control" id="email_from" name="email_from" 
+                                   value="{{ config.email_from }}" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="email_to" class="form-label">To Email</label>
+                            <input type="email" class="form-control" id="email_to" name="email_to" 
+                                   value="{{ config.email_to }}" required>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="email_password" class="form-label">Email Password</label>
+                        <input type="password" class="form-control" id="email_password" name="email_password" 
+                               value="{{ config.email_password }}" required>
+                        <div class="form-text">Use App Password for Gmail</div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="email_subject" class="form-label">Email Subject</label>
+                        <input type="text" class="form-control" id="email_subject" name="email_subject" 
+                               value="{{ config.email_subject }}" required>
+                    </div>
+
+                    <!-- Google Sheets & Schedule Settings -->
+                    <h6 class="text-primary mb-3 mt-4"><i class="fas fa-table"></i> Google Sheets & Schedule Settings</h6>
+                    <div class="mb-3">
+                        <label for="google_sheet_name" class="form-label">Google Sheet Name</label>
+                        <input type="text" class="form-control" id="google_sheet_name" name="google_sheet_name" 
+                               value="{{ config.google_sheet_name }}" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="google_sheet_url" class="form-label">Google Sheet URL</label>
+                        <input type="url" class="form-control" id="google_sheet_url" name="google_sheet_url" 
+                               value="{{ config.google_sheet_url }}" required>
+                        <div class="form-text">Full URL to your Google Sheet</div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="service_account_file" class="form-label">Service Account File</label>
+                        <input type="text" class="form-control" id="service_account_file" name="service_account_file" 
+                               value="{{ config.service_account_file }}" required>
+                        <div class="form-text">Path to your Google Service Account JSON file</div>
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label for="timezone" class="form-label">Timezone</label>
+                            <select class="form-select" id="timezone" name="timezone" required>
+                                <option value="Asia/Dhaka" {{ 'selected' if config.timezone == 'Asia/Dhaka' else '' }}>Asia/Dhaka</option>
+                                <option value="UTC" {{ 'selected' if config.timezone == 'UTC' else '' }}>UTC</option>
+                                <option value="Asia/Kolkata" {{ 'selected' if config.timezone == 'Asia/Kolkata' else '' }}>Asia/Kolkata</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="run_hour" class="form-label">Run Hour (24h)</label>
+                            <input type="number" class="form-control" id="run_hour" name="run_hour" 
+                                   min="0" max="23" value="{{ config.run_hour }}" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="run_minute" class="form-label">Run Minute</label>
+                            <input type="number" class="form-control" id="run_minute" name="run_minute" 
+                                   min="0" max="59" value="{{ config.run_minute }}" required>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <a href="{{ url_for('index') }}" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left"></i> Back to Dashboard
+                        </a>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i> Save Configuration
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+services:
+  - type: web
+    name: meterbillscheduler-web
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    autoDeploy: true
+    envVars:
+      - key: ACCOUNT_NUMBER
+        sync: false
+      - key: METER_NUMBER
+        sync: false
+      - key: SYSTEM_TYPE
+        sync: false
+      - key: EMAIL_FROM
+        sync: false
+      - key: EMAIL_TO
+        sync: false
+      - key: EMAIL_PASSWORD
+        sync: false
+      - key: SERVICE_ACCOUNT_FILE
+        sync: false
+      - key: EMAIL_SUBJECT
+        value: "⚠️ DESCO Balance & Daily Usage"
+      - key: CSV_FILE
+        value: "desco_consumption_log.csv"
+      - key: RUN_HOUR
+        value: "17"
+      - key: RUN_MINUTE
+        value: "50"
+
